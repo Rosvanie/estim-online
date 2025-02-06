@@ -113,114 +113,271 @@
   }
   
 
+
+ /* 🚀 MENU BURGER (MOBILE) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+  z-index: 1100;
+}
+
+.menu-toggle .bar {
+  width: 30px;
+  height: 4px;
+  background-color: var(--black);
+  transition: all 0.3s ease;
+}
+#active{
+  color: var(--green);
+}
+
+/* ✅ RESPONSIVE - Affichage du menu en mobile */
+
+@media screen and (max-width: 900px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100px;
+    right: -100%;
+    width: 100%;
+    height: 80vh;
+    background-color: var(--white);
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 50px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .navbar a {
+    font-size: 1.4rem;
+    padding: 15px 25px;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .navbar.active a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ✅ Contact en bouton */
+  .navbar a:last-child {
+    background-color: var(--green);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .navbar a:last-child:hover {
+    background-color: var(--white);
+    color: var(--green);
+    border: 2px solid var(--green);
+  }
+
+  /* ✅ Affichage du menu quand actif */
+  .navbar.active {
+    right: 0;
+  }
+
+  /* 🔥 Animation du menu burger */
+  .menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+@media screen and (max-width: 430px) {
+
+  .header{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .logo{
+    width: 14vw;
+  }
+  .logo-container h1{
+    font-size: 14px;
+  }
+  .auth-buttons a{
+    font-size: 10px;
+  }
+}
+
+
+
+
+
   
 
 
 
   
 /* Hero Section */
+/* Section Hero principale */
 .hero {
-    position: relative;
-    background: url('img/banner.jpg') center/cover no-repeat;
-    height: 100vh;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden; /* Masquer tout débordement visuel */
+  position: relative;
+  background: url('img/banner.jpg') center/cover no-repeat;
+  height: 100vh;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden; /* Masquer tout débordement visuel */
+}
+
+/* Overlay de la section Hero */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* Overlay en dégradé */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  animation: fadeIn 1.5s ease-out; /* Animation d'apparition */
+}
+
+/* Titres de la section Hero */
+.hero h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-weight: bold;
+  color: var(--yellow); /* Couleur mise en avant */
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Texte de la section Hero */
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--white);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Mots en surbrillance */
+.highlight {
+  color: var(--yellow); /* Texte mis en avant */
+  font-style: italic;
+  animation: pulse 2s infinite; /* Effet de pulsation sur certains mots */
+}
+
+.highlight-alt {
+  color: var(--white);
+  background: var(--yellow);
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
+.highlight-text {
+  color: var(--yellow);
+  text-decoration: underline;
+}
+
+/* Bouton dans la section Hero */
+.hero .btn-yellow {
+  background: var(--yellow);
+  color: var(--black);
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 50px; /* Donne un effet plus moderne */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.hero .btn-yellow:hover {
+  background: #ffc107; /* Couleur légèrement plus claire */
+  transform: translateY(1.1px); /* Soulève le bouton au survol */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)); /* Overlay en dégradé */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    animation: fadeIn 1.5s ease-out; /* Animation d'apparition */
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .hero h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    font-weight: bold;
-    color: var(--yellow); /* Couleur mise en avant */
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: var(--white);
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
-  
-  .highlight {
-    color: var(--yellow); /* Texte mis en avant */
-    font-style: italic;
-    animation: pulse 2s infinite; /* Effet de pulsation sur certains mots */
-  }
-  
-  .highlight-alt {
-    color: var(--white);
-    background: var(--yellow);
-    padding: 0 5px;
-    border-radius: 3px;
-  }
-  
-  .highlight-text {
-    color: var(--yellow);
-    text-decoration: underline;
-  }
-  
-  .hero .btn-yellow {
-    background: var(--yellow);
-    color: var(--black);
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 50px; /* Donne un effet plus moderne */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .hero .btn-yellow:hover {
-    background: #ffc107; /* Couleur légèrement plus claire */
-    transform: translateY(1.1px); /* Soulève le bouton au survol */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
+}
+
+/* 🚀 Responsivité pour appareils mobiles */
+@media screen and (max-width: 768px) {
+  .hero {
+    height: 80vh; /* Réduction de la hauteur pour les petits écrans */
   }
 
-  
+  .hero h2 {
+    font-size: 2.5rem; /* Taille réduite du titre */
+  }
+
+  .hero p {
+    font-size: 1rem; /* Taille réduite du texte */
+    margin-bottom: 1.5rem; /* Espacement plus petit */
+  }
+
+  .hero .btn-yellow {
+    padding: 0.6rem 1.5rem; /* Bouton plus petit sur mobile */
+    font-size: 0.9rem; /* Texte plus petit */
+  }
+}
+
+/* 🚀 Responsivité pour très petits écrans (smartphones) */
+@media screen and (max-width: 480px) {
+  .hero {
+    height: 70vh; /* Hauteur encore réduite */
+  }
+
+  .hero h2 {
+    font-size: 2rem; /* Taille encore plus petite du titre */
+  }
+
+  .hero p {
+    font-size: 0.9rem; /* Texte encore plus petit */
+    margin-bottom: 1rem; /* Moins d'espacement */
+  }
+
+  .hero .btn-yellow {
+    padding: 0.5rem 1.2rem; /* Bouton encore plus petit */
+    font-size: 0.8rem; /* Texte encore plus petit */
+  }
+}
+
 
 
 
@@ -228,6 +385,7 @@
 
 
 /*SECTION PARTENAIRE*/
+/* Section titre */
 .section-title h2 {
   font-size: 2rem;
   text-align: center;
@@ -258,6 +416,8 @@
   justify-content: space-around;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap; /* Permet de passer les logos sur la ligne suivante si nécessaire */
+  padding: 0 20px;
 }
 
 .partner img {
@@ -271,6 +431,51 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* 🚀 Responsivité pour tablettes (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .partners {
+    justify-content: space-evenly; /* Ajuste l'espacement des logos */
+  }
+
+  .partner img {
+    width: 100px; /* Réduit la taille des logos pour les tablettes */
+  }
+}
+
+/* 🚀 Responsivité pour mobiles (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .partners {
+    justify-content: center; /* Centrer les logos */
+    gap: 15px; /* Réduit l'espace entre les logos */
+  }
+
+  .partner img {
+    width: 90px; /* Encore plus petit pour les petits écrans */
+  }
+}
+
+/* 🚀 Responsivité pour très petits écrans (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .partners {
+    justify-content: center;
+    gap: 10px; /* Encore moins d'espace entre les logos */
+  }
+
+  .partner img {
+    width: 80px; /* Logos plus petits sur les très petits écrans */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -278,6 +483,7 @@
 /*SECTION A PROPOS*/
 
 /* Section About Courses */
+/* Section principale */
 .about-courses {
   position: relative;
   overflow: hidden;
@@ -368,15 +574,71 @@
   transform: scale(1.05); /* Zoom léger au survol */
 }
 
-/* Responsive */
+/* 🚀 Responsivité pour les écrans moyens (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .about-courses .content {
+    gap: 1.5rem;
+  }
+
+  .about-text h2 {
+    font-size: 1.8rem; /* Légère réduction de la taille du titre */
+  }
+
+  .about-text p {
+    font-size: 1rem; /* Réduction de la taille du texte */
+  }
+}
+
+/* 🚀 Responsivité pour les mobiles (max-width: 768px) */
 @media (max-width: 768px) {
   .about-courses .content {
     flex-direction: column;
     text-align: center;
   }
 
+  .about-text h2 {
+    font-size: 1.6rem; /* Taille de titre réduite pour les petits écrans */
+  }
+
+  .about-text p {
+    font-size: 0.9rem; /* Ajuste le texte pour l'écran mobile */
+  }
+
+  .cta-button {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
   .about-image {
-    margin-top: 2rem;
+    margin-top: 2rem; /* Ajout d'une marge pour les mobiles */
+  }
+
+  .image-container {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Moins d'ombre sur les petits écrans */
+  }
+}
+
+/* 🚀 Responsivité pour les très petits écrans (max-width: 480px) */
+@media (max-width: 480px) {
+  .about-text h2 {
+    font-size: 1.4rem; /* Réduction de la taille du titre */
+  }
+
+  .about-text p {
+    font-size: 0.85rem; /* Réduction de la taille du texte */
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
+
+  .about-image {
+    margin-top: 1.5rem;
+  }
+
+  .image-container {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Moins d'ombre sur les très petits écrans */
   }
 }
 
@@ -600,7 +862,32 @@
   background: linear-gradient(45deg, var(--yellow), #8c6d21);
 }
 
+/* Amélioration de la lisibilité des descriptions */
+.training-card p {
+  font-size: 1rem; /* Augmenter la taille de la police pour les descriptions */
+  color: #444; /* Augmenter le contraste */
+}
 
+/* Amélioration de l'effet de zoom des images */
+.training-card:hover .training-image {
+  transform: scale(1.1); /* Zoom un peu plus grand pour un effet plus prononcé */
+  filter: brightness(90%); /* Ajout d'un filtre de luminosité pour l'effet */
+}
+
+/* @media Query pour affiner les écrans plus petits */
+@media (max-width: 768px) {
+  .training-card {
+    max-width: 280px; /* Réduire légèrement la largeur maximale sur les petits écrans */
+  }
+
+  .training-card h3 {
+    font-size: 1.1rem; /* Ajuster la taille des titres */
+  }
+
+  .training-card p {
+    font-size: 0.95rem; /* Adapter la taille du texte des descriptions */
+  }
+}
 
 
 
