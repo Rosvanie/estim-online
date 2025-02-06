@@ -1,3 +1,16 @@
+// LE NAVBAR
+// Sélection des éléments
+const menuToggle = document.getElementById("menu-toggle");
+const navbar = document.getElementById("navbar");
+
+// Ajout d'un événement "click"
+menuToggle.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+    menuToggle.classList.toggle("active"); // Ajout de l'animation au bouton
+});
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const animateNumber = (id, target, suffix = "") => {
       const element = document.getElementById(id);
@@ -38,10 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   
-
-
-
-
 
   //faq
     
